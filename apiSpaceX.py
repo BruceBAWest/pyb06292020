@@ -7,6 +7,7 @@ This program harvests SpaceX data avail from https://api.spacexdata.com/v3/cores
 # using std library method for getting at API data
 import urllib.request 
 import json
+import ssl
 
 # GOBAL / CONSTANT of the API we want to lookup
 SPACEXURI = "https://api.spacexdata.com/v3/cores"
@@ -24,7 +25,14 @@ def main():
     print(type(listOfCores))
 
     for core in listOfCores:
-        print(core, end="\n\n")
+        print(core['core_serial'])
+        print(core['original_launch'], end="\n\n")
+        missions = core['missions']
+        if (len(missions) > 1 ):
+            for mission in missions:
+                print(f"- Flight {mission['flight']} in support of mission {mission['name']}")
+
+        print("\n")
 
 
 if __name__ == "__main__":
