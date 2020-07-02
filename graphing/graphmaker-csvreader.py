@@ -1,25 +1,16 @@
 #!/usr/bin/python3
-
-# from python std library
 import csv
-
-# python3 -m pip install np
 import numpy as np
-# python3 -m pip install matplotlib
-# sudo apt install python3-tk
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-
-from matpotlib import use
-
-use('Agg')
 
 def parsecsvdata():
     """returns a list. [0] is LAN and [1] WAN data"""
-    summary = [] # list that will contain [(LAN), (WAN)]
+    summary = [] # list that will containt wan/lan
 
     # open csv data
-    with open("/home/student/mycode/graphing/2018summary.csv",\
-     "r") as downtime:
+    with open("/home/student/mycode/graphing/2018summary.csv","r") as downtime:
         # parse csv data with csv.reader
         downdata = csv.reader(downtime, delimiter=",")
         for row in downdata:
@@ -27,8 +18,7 @@ def parsecsvdata():
             summary.append(rowdat) # add dict to list
     return summary
 
-
-def main():
+def main(): 
     N = 4
     ## grab our data
     summary = parsecsvdata() # grab our data
@@ -56,4 +46,3 @@ def main():
     print("Graph created.")
 
 main()
-
