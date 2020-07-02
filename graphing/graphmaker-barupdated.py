@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 
-import matplotlib.pyplot as plt
-
-from matpotlib import use 
-
-use('Agg')
+import matplotlib.pyplot as plt 
 
 def main():
     N = 4
@@ -29,7 +27,7 @@ def main():
     plt.legend((p1[0], p2[0]), ("LAN", "WAN"))
 
     # SAVE the graph
-    plt.savefig("/home/student/mycode/graphing/2018summary.png")
+    plt.savefig("/home/student/mycode/graphing/2018summary.pdf")
 
-main()
-
+if __name__ == "__main__":
+    main()
